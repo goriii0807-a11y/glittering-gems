@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Glittering Gems — Fine Jewelry, Cut to Catch Light</title>
+<meta name="description" content="Glittering Gems is a fine jewelry atelier specializing in hand-selected, precision-cut gemstones set in one-of-a-kind pieces.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --deep:      #0b1912;
+    --emerald:   #163628;
+    --emerald-2: #1f4b38;
+    --gold:      #c9a24a;
+    --gold-dim:  #8a7333;
+    --ivory:     #f2ead7;
+    --ivory-dim: #cfc6ad;
+    --ruby:      #7a2038;
+    --sapphire:  #274a72;
+    --amethyst:  #5c3a68;
+
+    --display: 'Fraunces', serif;
+    --body:    'Inter', sans-serif;
+    --mono:    'JetBrains Mono', monospace;
+
+    --glint-x: 50%;
+    --glint-y: 30%;
+  }
+
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    *{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; }
+  }
+
+  body{
+    background: var(--deep);
+    color: var(--ivory);
+    font-family: var(--body);
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+
+  a{ color:inherit; }
+  img,svg{ display:block; max-width:100%; }
+
+  ::selection{ background:var(--gold); color:var(--deep); }
+
+  :focus-visible{
+    outline: 2px solid var(--gold);
+    outline-offset: 3px;
+  }
+
+  .wrap{
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 32px;
+  }
+
+  .eyebrow{
+    font-family: var(--mono);
+    font-size:0.72rem;
+    letter-spacing:0.22em;
+    text-transform:uppercase;
+    color: var(--gold);
+  }
+
+  h1,h2,h3{
+    font-family: var(--display);
+    font-weight:500;
+    letter-spacing:-0.01em;
+    color: var(--ivory);
+  }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:fixed;
+    top:0; left:0; right:0;
+    z-index:100;
+    background: linear-gradient(to bottom, rgba(11,25,18,0.92), rgba(11,25,18,0));
+    padding:20px 0 40px;
+    pointer-events:none;
+  }
+  header .wrap{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    pointer-events:auto;
+  }
+  .logo{
+    font-family: var(--display);
+    font-size:1.3rem;
+    letter-spacing:0.02em;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    text-decoration:none;
+    color:var(--ivory);
+  }
+  .logo svg{ width:22px; height:22px; }
+
+  nav.links{
+    display:flex;
+    gap:34px;
+    font-size:0.86rem;
+    letter-spacing:0.03em;
+  }
+  nav.links a{
+    text-decoration:none;
+    color:var(--ivory-dim);
+    position:relative;
+    padding-bottom:4px;
+    transition:color .25s ease;
+  }
+  nav.links a:hover{ color:var(--gold); }
+  nav.links a::after{
+    content:'';
+    position:absolute;
+    left:0; bottom:0;
+    width:0%; height:1px;
+    background:var(--gold);
+    transition:width .3s ease;
+  }
+  nav.links a:hover::after{ width:100%; }
+
+  .nav-cta{
+    border:1px solid var(--gold-dim);
+    padding:9px 18px;
+    border-radius:2px;
+    font-size:0.8rem;
+    letter-spacing:0.04em;
+    text-decoration:none;
+    color:var(--gold);
+    transition: background .25s ease, color .25s ease;
+    white-space:nowrap;
+  }
+  .nav-cta:hover{ background:var(--gold); color:var(--deep); }
+
+  .menu-btn{
+    display:none;
+    background:none;
+    border:1px solid var(--gold-dim);
+    color:var(--gold);
+    width:40px; height:40px;
+    border-radius:2px;
+    cursor:pointer;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    min-height:100svh;
+    display:flex;
+    align-items:center;
+    padding-top:120px;
+    background:
+      radial-gradient(700px 500px at var(--glint-x) var(--glint-y), rgba(201,162,74,0.14), transparent 60%),
+      linear-gradient(160deg, var(--deep) 0%, var(--emerald) 78%, var(--emerald-2) 100%);
+    overflow:hidden;
+  }
+
+  .hero .wrap{
+    display:grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap:40px;
+    align-items:center;
+  }
+
+  .hero h1{
+    font-size:clamp(2.6rem, 5.4vw, 4.6rem);
+    line-height:1.03;
+    margin:18px 0 22px;
+  }
+  .hero h1 em{
+    font-style:italic;
+    color:var(--gold);
+  }
+
+  .hero p.lede{
+    font-size:1.08rem;
+    color:var(--ivory-dim);
+    max-width:46ch;
+    margin-bottom:34px;
+  }
+
+  .cta-row{ display:flex; gap:18px; flex-wrap:wrap; align-items:center; }
+
+  .btn-primary{
+    background:var(--gold);
+    color:var(--deep);
+    text-decoration:none;
+    padding:15px 26px;
+    font-size:0.86rem;
+    letter-spacing:0.04em;
+    border-radius:2px;
+    font-weight:500;
+    transition:transform .25s ease, box-shadow .25s ease;
+    display:inline-block;
+  }
+  .btn-primary:hover{ transform:translateY(-2px); box-shadow:0 10px 24px rgba(201,162,74,0.25); }
+
+  .btn-ghost{
+    text-decoration:none;
+    color:var(--ivory);
+    font-size:0.86rem;
+    letter-spacing:0.03em;
+    border-bottom:1px solid var(--ivory-dim);
+    padding-bottom:3px;
+    transition:border-color .25s ease, color .25s ease;
+  }
+  .btn-ghost:hover{ color:var(--gold); border-color:var(--gold); }
+
+  /* the gem — signature element */
+  .gem-stage{
+    position:relative;
+    aspect-ratio:1/1;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  #gem{
+    width:100%;
+    max-width:420px;
+    filter: drop-shadow(0 20px 60px rgba(0,0,0,0.5));
+    transition: filter .2s ease;
+  }
+  .facet{
+    transition: fill .12s ease, opacity .12s ease;
+  }
+
+  .hero-scroll-cue{
+    position:absolute;
+    bottom:28px; left:50%;
+    transform:translateX(-50%);
+    display:flex; flex-direction:column; align-items:center;
+    gap:8px;
+    font-family:var(--mono);
+    font-size:0.65rem;
+    letter-spacing:0.2em;
+    color:var(--ivory-dim);
+  }
+  .hero-scroll-cue .line{
+    width:1px; height:36px;
+    background:linear-gradient(var(--gold), transparent);
+    animation: dropline 2.4s ease-in-out infinite;
+  }
+  @keyframes dropline{
+    0%{ transform:scaleY(0.3); opacity:0.3; transform-origin:top; }
+    50%{ transform:scaleY(1); opacity:1; transform-origin:top; }
+    100%{ transform:scaleY(0.3); opacity:0.3; transform-origin:top; }
+  }
+
+  /* ---------- SECTION shell ---------- */
+  section{ padding:130px 0; position:relative; }
+  .section-head{
+    max-width:640px;
+    margin-bottom:64px;
+  }
+  .section-head h2{
+    font-size:clamp(1.9rem, 3.4vw, 2.7rem);
+    margin-top:14px;
+  }
+  .section-head p{
+    color:var(--ivory-dim);
+    margin-top:16px;
+    font-size:1.02rem;
+    max-width:52ch;
+  }
+
+  /* ---------- PHILOSOPHY strip ---------- */
+  .philosophy{
+    background:var(--emerald);
+    border-top:1px solid rgba(201,162,74,0.18);
+    border-bottom:1px solid rgba(201,162,74,0.18);
+  }
+  .philosophy .wrap{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap:48px;
+  }
+  .philosophy .stat .num{
+    font-family:var(--display);
+    font-size:2.6rem;
+    color:var(--gold);
+  }
+  .philosophy .stat .label{
+    font-family:var(--mono);
+    font-size:0.72rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--ivory-dim);
+    margin-top:6px;
+  }
+
+  /* ---------- COLLECTION ---------- */
+  .grid-collection{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap:28px;
+  }
+  .piece{
+    background: linear-gradient(165deg, rgba(255,255,255,0.03), rgba(255,255,255,0));
+    border:1px solid rgba(201,162,74,0.16);
+    border-radius:3px;
+    overflow:hidden;
+    transition: transform .35s ease, border-color .35s ease;
+  }
+  .piece:hover{ transform:translateY(-6px); border-color:rgba(201,162,74,0.5); }
+
+  .piece-art{
+    aspect-ratio: 4/3;
+    display:flex; align-items:center; justify-content:center;
+    position:relative;
+  }
+  .piece-art svg{ width:58%; }
+
+  .piece-body{ padding:22px 24px 26px; }
+  .piece-body .carat{
+    font-family:var(--mono);
+    font-size:0.72rem;
+    color:var(--gold);
+    letter-spacing:0.06em;
+  }
+  .piece-body h3{
+    font-size:1.3rem;
+    margin:8px 0 6px;
+  }
+  .piece-body .gem-type{
+    color:var(--ivory-dim);
+    font-size:0.9rem;
+    margin-bottom:14px;
+  }
+  .piece-foot{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    border-top:1px solid rgba(201,162,74,0.14);
+    padding-top:14px;
+  }
+  .price{ font-family:var(--mono); font-size:0.9rem; color:var(--ivory); }
+  .inquire{
+    font-size:0.78rem;
+    letter-spacing:0.03em;
+    color:var(--gold);
+    text-decoration:none;
+    border-bottom:1px solid transparent;
+  }
+  .inquire:hover{ border-color:var(--gold); }
+
+  /* ---------- ANATOMY OF A CUT ---------- */
+  .anatomy{ background: linear-gradient(180deg, var(--deep), #0e1f16); }
+  .anatomy .wrap{
+    display:grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap:60px;
+    align-items:center;
+  }
+  .anatomy-diagram{ position:relative; }
+  .anatomy-diagram svg{ width:100%; max-width:460px; margin:0 auto; }
+
+  .cut-list{ list-style:none; counter-reset: none; }
+  .cut-list li{
+    display:grid;
+    grid-template-columns: 90px 1fr;
+    gap:20px;
+    padding:18px 0;
+    border-bottom:1px solid rgba(201,162,74,0.14);
+  }
+  .cut-list li:first-child{ border-top:1px solid rgba(201,162,74,0.14); }
+  .cut-list .part-label{
+    font-family:var(--mono);
+    font-size:0.75rem;
+    color:var(--gold);
+    letter-spacing:0.05em;
+    padding-top:2px;
+  }
+  .cut-list h4{
+    font-family:var(--display);
+    font-weight:500;
+    font-size:1.05rem;
+    margin-bottom:4px;
+    color:var(--ivory);
+  }
+  .cut-list p{
+    color:var(--ivory-dim);
+    font-size:0.92rem;
+  }
+
+  /* ---------- BIRTHSTONE GUIDE (marquee-less scroller) ---------- */
+  .guide{ background:var(--emerald-2); }
+  .guide .wrap > .section-head{ margin-bottom:44px; }
+  .stone-row{
+    display:grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap:1px;
+    background:rgba(201,162,74,0.16);
+    border:1px solid rgba(201,162,74,0.16);
+  }
+  .stone-cell{
+    background:var(--emerald-2);
+    padding:22px 16px;
+    text-align:center;
+    transition: background .25s ease;
+  }
+  .stone-cell:hover{ background:rgba(201,162,74,0.08); }
+  .stone-swatch{
+    width:26px; height:26px;
+    margin:0 auto 12px;
+    border-radius:50%;
+    box-shadow: inset 0 -3px 6px rgba(0,0,0,0.35), 0 0 14px 1px var(--sw-glow, transparent);
+  }
+  .stone-cell .month{
+    font-family:var(--mono);
+    font-size:0.62rem;
+    letter-spacing:0.1em;
+    color:var(--ivory-dim);
+    text-transform:uppercase;
+  }
+  .stone-cell .stone-name{
+    font-family:var(--display);
+    font-size:0.98rem;
+    margin-top:4px;
+    color:var(--ivory);
+  }
+
+  /* ---------- ATELIER / VISIT ---------- */
+  .visit{
+    background: linear-gradient(160deg, var(--emerald) 0%, var(--deep) 100%);
+    border-top:1px solid rgba(201,162,74,0.18);
+  }
+  .visit .wrap{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap:60px;
+  }
+  .visit h2{ font-size:clamp(1.9rem,3.2vw,2.6rem); margin-bottom:18px; }
+  .visit p{ color:var(--ivory-dim); margin-bottom:28px; max-width:46ch; }
+
+  .detail-list{ list-style:none; }
+  .detail-list li{
+    display:flex; justify-content:space-between;
+    padding:16px 0;
+    border-bottom:1px solid rgba(201,162,74,0.14);
+    font-size:0.94rem;
+  }
+  .detail-list li span:first-child{
+    font-family:var(--mono);
+    font-size:0.72rem;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--gold);
+  }
+
+  form.contact{ display:flex; flex-direction:column; gap:16px; }
+  form.contact input, form.contact textarea{
+    background:rgba(255,255,255,0.04);
+    border:1px solid rgba(201,162,74,0.24);
+    color:var(--ivory);
+    font-family:var(--body);
+    font-size:0.92rem;
+    padding:14px 16px;
+    border-radius:2px;
+    resize:none;
+  }
+  form.contact input::placeholder, form.contact textarea::placeholder{ color:var(--ivory-dim); }
+  form.contact textarea{ min-height:110px; }
+  form.contact button{
+    background:var(--gold);
+    color:var(--deep);
+    border:none;
+    padding:15px 22px;
+    font-size:0.86rem;
+    letter-spacing:0.04em;
+    border-radius:2px;
+    font-weight:500;
+    cursor:pointer;
+    transition:transform .25s ease;
+    align-self:flex-start;
+  }
+  form.contact button:hover{ transform:translateY(-2px); }
+  .form-note{ font-size:0.78rem; color:var(--ivory-dim); }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    background:var(--deep);
+    padding:48px 0 32px;
+    border-top:1px solid rgba(201,162,74,0.14);
+  }
+  footer .wrap{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:18px;
+  }
+  footer .foot-links{ display:flex; gap:24px; font-size:0.82rem; }
+  footer .foot-links a{ text-decoration:none; color:var(--ivory-dim); transition:color .25s ease; }
+  footer .foot-links a:hover{ color:var(--gold); }
+  footer .copy{ font-size:0.78rem; color:var(--ivory-dim); font-family:var(--mono); }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 900px){
+    .hero .wrap{ grid-template-columns:1fr; }
+    .gem-stage{ order:-1; max-width:280px; margin:0 auto 20px; }
+    .philosophy .wrap{ grid-template-columns:1fr; gap:28px; text-align:left; }
+    .grid-collection{ grid-template-columns:1fr 1fr; }
+    .anatomy .wrap{ grid-template-columns:1fr; }
+    .visit .wrap{ grid-template-columns:1fr; }
+    .stone-row{ grid-template-columns:repeat(3,1fr); }
+    nav.links{ display:none; }
+    .menu-btn{ display:block; }
+  }
+  @media (max-width: 560px){
+    .wrap{ padding:0 20px; }
+    .grid-collection{ grid-template-columns:1fr; }
+    .stone-row{ grid-template-columns:repeat(2,1fr); }
+    .cut-list li{ grid-template-columns:70px 1fr; }
+    section{ padding:90px 0; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a href="#top" class="logo" aria-label="Glittering Gems home">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M12 2 L3 9 L12 22 L21 9 Z" stroke="#c9a24a" stroke-width="1.2"/>
+        <path d="M3 9 L21 9 M8 9 L12 2 L16 9 M8 9 L12 22 M16 9 L12 22" stroke="#c9a24a" stroke-width="0.7" opacity="0.7"/>
+      </svg>
+      Glittering&nbsp;Gems
+    </a>
+    <nav class="links" aria-label="Primary">
+      <a href="#collection">Collection</a>
+      <a href="#cut">The Cut</a>
+      <a href="#guide">Birthstones</a>
+      <a href="#visit">Visit</a>
+    </nav>
+    <a href="#visit" class="nav-cta">Book a Viewing</a>
+    <button class="menu-btn" aria-label="Open menu">☰</button>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow">Est. hypothetical, faceted daily</p>
+        <h1>Light, cut into<br><em>certainty.</em></h1>
+        <p class="lede">Glittering Gems hand-selects rare stones and cuts each one to a single obsession: how it plays with light. Every piece is one of one — no two facets fall the same way twice.</p>
+        <div class="cta-row">
+          <a href="#collection" class="btn-primary">View the Collection</a>
+          <a href="#cut" class="btn-ghost">See how we cut →</a>
+        </div>
+      </div>
+
+      <div class="gem-stage">
+        <svg id="gem" viewBox="0 0 300 300" aria-label="An illustrated faceted gemstone that catches light as you move your cursor">
+          <defs>
+            <radialGradient id="gemGlow" cx="50%" cy="30%" r="75%">
+              <stop offset="0%" stop-color="#fdf6e3"/>
+              <stop offset="35%" stop-color="#c9a24a"/>
+              <stop offset="100%" stop-color="#1f4b38"/>
+            </radialGradient>
+          </defs>
+          <!-- crown facets -->
+          <polygon class="facet" points="150,20 200,70 100,70" fill="#2d6b4f" opacity="0.9"/>
+          <polygon class="facet" points="150,20 200,70 230,55" fill="#3a8264" opacity="0.85"/>
+          <polygon class="facet" points="150,20 100,70 70,55" fill="#245c42" opacity="0.85"/>
+          <polygon class="facet" points="200,70 230,55 250,90" fill="#c9a24a" opacity="0.55"/>
+          <polygon class="facet" points="100,70 70,55 50,90" fill="#8a7333" opacity="0.55"/>
+          <!-- table -->
+          <polygon class="facet" points="100,70 200,70 175,95 125,95" fill="#f2ead7" opacity="0.9"/>
+          <!-- girdle band -->
+          <polygon class="facet" points="50,90 100,70 125,95 175,95 200,70 250,90 220,110 80,110" fill="#1f4b38" opacity="0.8"/>
+          <!-- pavilion -->
+          <polygon class="facet" points="80,110 220,110 150,260" fill="#163628" opacity="0.95"/>
+          <polygon class="facet" points="80,110 150,260 60,140" fill="#0f2b20" opacity="0.9"/>
+          <polygon class="facet" points="220,110 150,260 240,140" fill="#2d6b4f" opacity="0.85"/>
+          <polygon class="facet" points="80,110 60,140 50,90" fill="#1a4433" opacity="0.9"/>
+          <polygon class="facet" points="220,110 240,140 250,90" fill="#0f2b20" opacity="0.9"/>
+          <!-- glint overlay follows cursor -->
+          <polygon points="100,70 200,70 175,95 125,95" fill="url(#gemGlow)" opacity="0.35"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="hero-scroll-cue" aria-hidden="true">
+      <span>SCROLL</span>
+      <span class="line"></span>
+    </div>
+  </section>
+
+  <!-- PHILOSOPHY -->
+  <section class="philosophy">
+    <div class="wrap">
+      <div class="stat">
+        <div class="num">58</div>
+        <div class="label">Facets, minimum, per signature stone</div>
+      </div>
+      <div class="stat">
+        <div class="num">1-of-1</div>
+        <div class="label">Pieces made — nothing re-cast</div>
+      </div>
+      <div class="stat">
+        <div class="num">100%</div>
+        <div class="label">Stones traceable to source</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COLLECTION -->
+  <section id="collection">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Current Collection</p>
+        <h2>Six pieces, each cut for a different kind of light.</h2>
+        <p>A hypothetical showcase — sized, priced, and named as they'd appear on the floor. Every stone below is fictional, built for this page.</p>
+      </div>
+
+      <div class="grid-collection">
+
+        <article class="piece">
+          <div class="piece-art" style="background:radial-gradient(circle at 50% 30%, rgba(122,32,56,0.35), transparent 70%);">
+            <svg viewBox="0 0 120 120"><polygon points="60,10 95,45 78,110 42,110 25,45" fill="#7a2038"/><polygon points="60,10 95,45 60,55" fill="#a13350" opacity="0.8"/><polygon points="60,10 25,45 60,55" fill="#5c1728" opacity="0.8"/></svg>
+          </div>
+          <div class="piece-body">
+            <div class="carat">2.4&nbsp;CT · RUBY</div>
+            <h3>The Meridian Ring</h3>
+            <p class="gem-type">Burmese-cut ruby, 18k rose gold band</p>
+            <div class="piece-foot">
+              <span class="price">$14,200</span>
+              <a href="#visit" class="inquire">Inquire →</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="piece">
+          <div class="piece-art" style="background:radial-gradient(circle at 50% 30%, rgba(39,74,114,0.35), transparent 70%);">
+            <svg viewBox="0 0 120 120"><polygon points="60,10 95,45 78,110 42,110 25,45" fill="#274a72"/><polygon points="60,10 95,45 60,55" fill="#3a6597" opacity="0.8"/><polygon points="60,10 25,45 60,55" fill="#1c3653" opacity="0.8"/></svg>
+          </div>
+          <div class="piece-body">
+            <div class="carat">3.1&nbsp;CT · SAPPHIRE</div>
+            <h3>The Nocturne Pendant</h3>
+            <p class="gem-type">Ceylon sapphire, brushed platinum chain</p>
+            <div class="piece-foot">
+              <span class="price">$19,800</span>
+              <a href="#visit" class="inquire">Inquire →</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="piece">
+          <div class="piece-art" style="background:radial-gradient(circle at 50% 30%, rgba(201,162,74,0.35), transparent 70%);">
+            <svg viewBox="0 0 120 120"><polygon points="60,10 95,45 78,110 42,110 25,45" fill="#c9a24a"/><polygon points="60,10 95,45 60,55" fill="#e0bc6c" opacity="0.8"/><polygon points="60,10 25,45 60,55" fill="#a1802f" opacity="0.8"/></svg>
+          </div>
+          <div class="piece-body">
+            <div class="carat">1.6&nbsp;CT · YELLOW DIAMOND</div>
+            <h3>The Solstice Studs</h3>
+            <p class="gem-type">Fancy-yellow diamond pair, 18k gold settings</p>
+            <div class="piece-foot">
+              <span class="price">$22,500</span>
+              <a href="#visit" class="inquire">Inquire →</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="piece">
+          <div class="piece-art" style="background:radial-gradient(circle at 50% 30%, rgba(92,58,104,0.35), transparent 70%);">
+            <svg viewBox="0 0 120 120"><polygon points="60,10 95,45 78,110 42,110 25,45" fill="#5c3a68"/><polygon points="60,10 95,45 60,55" fill="#7c528c" opacity="0.8"/><polygon points="60,10 25,45 60,55" fill="#432a4c" opacity="0.8"/></svg>
+          </div>
+          <div class="piece-body">
+            <div class="carat">4.0&nbsp;CT · AMETHYST</div>
+            <h3>The Vesper Cuff</h3>
+            <p class="gem-type">Siberian amethyst, hammered sterling silver</p>
+            <div class="piece-foot">
+              <span class="price">$6,400</span>
+              <a href="#visit" class="inquire">Inquire →</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="piece">
+          <div class="piece-art" style="background:radial-gradient(circle at 50% 30%, rgba(45,107,79,0.35), transparent 70%);">
+            <svg viewBox="0 0 120 120"><polygon points="60,10 95,45 78,110 42,110 25,45" fill="#2d6b4f"/><polygon points="60,10 95,45 60,55" fill="#428a6a" opacity="0.8"/><polygon points="60,10 25,45 60,55" fill="#1f4b38" opacity="0.8"/></svg>
+          </div>
+          <div class="piece-body">
+            <div class="carat">2.9&nbsp;CT · EMERALD</div>
+            <h3>The Verdant Drop Earrings</h3>
+            <p class="gem-type">Colombian emerald, 18k yellow gold</p>
+            <div class="piece-foot">
+              <span class="price">$17,900</span>
+              <a href="#visit" class="inquire">Inquire →</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="piece">
+          <div class="piece-art" style="background:radial-gradient(circle at 50% 30%, rgba(242,234,215,0.35), transparent 70%);">
+            <svg viewBox="0 0 120 120"><polygon points="60,10 95,45 78,110 42,110 25,45" fill="#f2ead7"/><polygon points="60,10 95,45 60,55" fill="#fffdf5" opacity="0.9"/><polygon points="60,10 25,45 60,55" fill="#cfc6ad" opacity="0.9"/></svg>
+          </div>
+          <div class="piece-body">
+            <div class="carat">1.2&nbsp;CT · DIAMOND</div>
+            <h3>The Anchor Solitaire</h3>
+            <p class="gem-type">Round brilliant diamond, platinum band</p>
+            <div class="piece-foot">
+              <span class="price">$11,300</span>
+              <a href="#visit" class="inquire">Inquire →</a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ANATOMY OF THE CUT -->
+  <section class="anatomy" id="cut">
+    <div class="wrap">
+      <div class="anatomy-diagram">
+        <svg viewBox="0 0 300 260" aria-label="Cross-section diagram of a cut gemstone, labeled table, crown, girdle, pavilion, and culet">
+          <polygon points="90,40 210,40 240,80 60,80" fill="#2d6b4f" opacity="0.9"/>
+          <polygon points="90,40 210,40 170,58 130,58" fill="#f2ead7" opacity="0.95"/>
+          <polygon points="60,80 240,80 220,96 80,96" fill="#c9a24a" opacity="0.5"/>
+          <polygon points="80,96 220,96 150,220" fill="#163628" opacity="0.95"/>
+          <circle cx="150" cy="220" r="3.5" fill="#f2ead7"/>
+          <line x1="150" y1="40" x2="150" y2="10" stroke="#c9a24a" stroke-width="0.6" opacity="0.5"/>
+          <line x1="240" y1="80" x2="270" y2="70" stroke="#c9a24a" stroke-width="0.6" opacity="0.5"/>
+          <line x1="220" y1="96" x2="270" y2="100" stroke="#c9a24a" stroke-width="0.6" opacity="0.5"/>
+          <line x1="150" y1="220" x2="150" y2="248" stroke="#c9a24a" stroke-width="0.6" opacity="0.5"/>
+        </svg>
+      </div>
+
+      <div>
+        <p class="eyebrow">The Anatomy of a Cut</p>
+        <h2 style="margin:14px 0 40px;">Five parts. One decision, made fifty-eight times.</h2>
+
+        <ul class="cut-list">
+          <li>
+            <span class="part-label">TABLE</span>
+            <div><h4>The flat top facet</h4><p>The largest single facet — it's the window the eye looks through first, and the one most cutters are tempted to oversize for apparent carat weight.</p></div>
+          </li>
+          <li>
+            <span class="part-label">CROWN</span>
+            <div><h4>The upper faceted slope</h4><p>Angled facets between the table and the girdle that break incoming light into the spectrum you actually see as "sparkle."</p></div>
+          </li>
+          <li>
+            <span class="part-label">GIRDLE</span>
+            <div><h4>The stone's widest edge</h4><p>The thin band that meets the setting — where a lapidary's restraint shows most, since too thin chips and too thick reads clumsy.</p></div>
+          </li>
+          <li>
+            <span class="part-label">PAVILION</span>
+            <div><h4>The lower body</h4><p>Everything below the girdle. Its angles decide whether light exits back through the crown — or leaks out the bottom, dulling the stone.</p></div>
+          </li>
+          <li>
+            <span class="part-label">CULET</span>
+            <div><h4>The base point</h4><p>Ideally invisible. A culet that's too large opens a small window straight through the stone, visible as a dark or washed-out spot.</p></div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- BIRTHSTONE GUIDE -->
+  <section class="guide" id="guide">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Field Guide</p>
+        <h2>A stone for every month, if you're looking for a reason.</h2>
+      </div>
+    </div>
+    <div class="wrap" style="padding:0;">
+      <div class="stone-row">
+        <div class="stone-cell"><div class="stone-swatch" style="background:#7a2038; --sw-glow:rgba(122,32,56,0.6);"></div><div class="month">January</div><div class="stone-name">Garnet</div></div>
+        <div class="stone-cell"><div class="stone-swatch" style="background:#8a5fc9; --sw-glow:rgba(138,95,201,0.6);"></div><div class="month">February</div><div class="stone-name">Amethyst</div></div>
+        <div class="stone-cell"><div class="stone-swatch" style="background:#5fc9c1; --sw-glow:rgba(95,201,193,0.6);"></div><div class="month">March</div><div class="stone-name">Aquamarine</div></div>
+        <div class="stone-cell"><div class="stone-swatch" style="background:#f2ead7; --sw-glow:rgba(242,234,215,0.6);"></div><div class="month">April</div><div class="stone-name">Diamond</div></div>
+        <div class="stone-cell"><div class="stone-swatch" style="background:#2d6b4f; --sw-glow:rgba(45,107,79,0.6);"></div><div class="month">May</div><div class="stone-name">Emerald</div></div>
+        <div class="stone-cell"><div class="stone-swatch" style="background:#c9d3e0; --sw-glow:rgba(201,211,224,0.6);"></div><div class="month">June</div><div class="stone-name">Pearl</div></div>
+        <div class="stone-cell"><div class="stone-swatch" style="background:#274a72; --sw-glow:rgba(39,74,114,0.6);"></div><div class="month">July</div><div class="stone-name">Ruby</div></div>
+        <div class="stone-cell"><div class="stone-swatch" style="background:#3a8264; --sw-glow:rgba(58,130,100,0.6);"></div><div class="month">August</div><div class="stone-name">Peridot</div></div>
+        <div class="stone-cell"><div class="stone-swatch" style="background:#274a72; --sw-glow:rgba(39,74,114,0.6);"></div><div class="month">September</div><div class="stone-name">Sapphire</div></div>
+        <div class="stone-cell"><div class="stone-swatch" style="background:#c9a24a; --sw-glow:rgba(201,162,74,0.6);"></div><div class="month">October</div><div class="stone-name">Opal</div></div>
+        <div class="stone-cell"><div class="stone-swatch" style="background:#e0bc6c; --sw-glow:rgba(224,188,108,0.6);"></div><div class="month">November</div><div class="stone-name">Citrine</div></div>
+        <div class="stone-cell"><div class="stone-swatch" style="background:#3a6597; --sw-glow:rgba(58,101,151,0.6);"></div><div class="month">December</div><div class="stone-name">Topaz</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISIT / CONTACT -->
+  <section class="visit" id="visit">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow">Visit the Atelier</p>
+        <h2>Private viewings, by appointment.</h2>
+        <p>Every piece is easier to judge in hand than on a screen. Book a viewing and we'll have a short list of stones pulled and ready, matched to what you tell us below.</p>
+
+        <ul class="detail-list">
+          <li><span>Address</span><span>14 Lapidary Row, Suite 3</span></li>
+          <li><span>Hours</span><span>Tue–Sat, 11:00–18:00</span></li>
+          <li><span>Phone</span><span>(555) 019-2244</span></li>
+          <li><span>Email</span><span>hello@glitteringgems.example</span></li>
+        </ul>
+      </div>
+
+      <form class="contact" onsubmit="return false;">
+        <input type="text" placeholder="Your name" aria-label="Your name" required>
+        <input type="email" placeholder="Email address" aria-label="Email address" required>
+        <input type="text" placeholder="What are you looking for? (e.g. engagement ring, emerald)" aria-label="What are you looking for">
+        <textarea placeholder="Anything else we should know before you visit?" aria-label="Additional message"></textarea>
+        <button type="submit">Request a Viewing</button>
+        <p class="form-note">This is a hypothetical demo form — it doesn't send anywhere yet. Wire it up to Formspree, Netlify Forms, or your own backend before going live.</p>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="logo" style="font-size:1rem;">
+      <svg viewBox="0 0 24 24" fill="none" width="16" height="16" aria-hidden="true">
+        <path d="M12 2 L3 9 L12 22 L21 9 Z" stroke="#c9a24a" stroke-width="1.2"/>
+      </svg>
+      Glittering Gems
+    </div>
+    <div class="foot-links">
+      <a href="#collection">Collection</a>
+      <a href="#cut">The Cut</a>
+      <a href="#guide">Birthstones</a>
+      <a href="#visit">Visit</a>
+    </div>
+    <div class="copy">A hypothetical atelier · demo site</div>
+  </div>
+</footer>
+
+<script>
+  // Hero gem catches light as the cursor moves across the hero section
+  (function(){
+    var hero = document.getElementById('hero');
+    var root = document.documentElement;
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!hero || reduce) return;
+
+    hero.addEventListener('mousemove', function(e){
+      var rect = hero.getBoundingClientRect();
+      var x = ((e.clientX - rect.left) / rect.width) * 100;
+      var y = ((e.clientY - rect.top) / rect.height) * 100;
+      root.style.setProperty('--glint-x', x + '%');
+      root.style.setProperty('--glint-y', y + '%');
+
+      var facets = document.querySelectorAll('#gem .facet');
+      var dx = (x - 50) / 50;
+      var dy = (y - 50) / 50;
+      facets.forEach(function(f, i){
+        var offset = Math.sin(i * 1.7 + dx * 2 + dy * 2) * 0.15;
+        f.style.opacity = Math.max(0.45, Math.min(1, 0.8 + offset));
+      });
+    });
+  })();
+
+  // Mobile menu toggle
+  (function(){
+    var btn = document.querySelector('.menu-btn');
+    var links = document.querySelector('nav.links');
+    if (!btn || !links) return;
+    btn.addEventListener('click', function(){
+      var open = links.style.display === 'flex';
+      links.style.display = open ? 'none' : 'flex';
+      links.style.cssText += open ? '' : 'position:fixed; top:70px; left:20px; right:20px; background:#0b1912; flex-direction:column; padding:24px; border:1px solid rgba(201,162,74,0.3); border-radius:4px; gap:18px; z-index:200;';
+    });
+  })();
+</script>
+
+</body>
+</html>
